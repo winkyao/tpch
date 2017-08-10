@@ -3,7 +3,7 @@ tbl: dbgen
 dbgen:
 	cd dbgen; make;
 load:
-	mysql -h 127.0.0.1 -P 4000 -u root -D test < dss.sql
+	mysql -h 127.0.0.1 -P 4000 -u root < dss.sql
 	sh loadalldata.sh
 cleansql:
 	mv dss.sql dss.sqt
