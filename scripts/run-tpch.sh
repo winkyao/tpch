@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
+
+run() {
 CURDIR=$(cd `dirname $0`; pwd)
-OUTDIR=$CURDIR/$1
+OUTDIR=$CURDIR/check_answers/$1
 
 if [ ! -d $OUTDIR ]; then
   mkdir -p $OUTDIR
@@ -28,3 +30,10 @@ for job in `jobs -p`;
 do
 	wait $job
 done
+}
+
+if [ $# -eq 0 ]; then
+	run tidb_r
+else
+	run $*
+fi
