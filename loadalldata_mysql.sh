@@ -5,7 +5,7 @@ DIR=$PWD
 PAR_DIR=${PWD%/$postfix}
 DBGEN=$PAR_DIR/dbgen
 prefix=$DBGEN/
-write_to_tidb()
+write_to_mysql()
 {
     rm -rf $DBGEN/*.sql
     mysql -u root < dss.sql
@@ -20,8 +20,9 @@ write_to_tidb()
         echo "LOAD DATA LOCAL INFILE '$tbl' INTO TABLE $name" >> $sql_file
         echo "FIELDS TERMINATED BY '|';" >> $sql_file
 	mysql -u root --local-infile=1 -D tpch < $sql_file
+	echo $?
     done
     echo "finish mysql..."
 }
 
-write_to_tidb
+write_to_mysql

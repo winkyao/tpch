@@ -1,5 +1,5 @@
 tbl: dbgen
-	cd dbgen && ./dbgen -s 0.001
+	cd dbgen && ./dbgen -s 0.015
 dbgen:
 	cd dbgen; make;
 load:
